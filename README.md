@@ -106,7 +106,7 @@ This command will begin download the Bitnami Docker images and start the service
 > View the container logs using:
 >
 > ```bash
-> docker-compose -f logs
+> docker-compose logs
 > ```
 
 Get the IP address of the Docker Machine VM using:
@@ -136,13 +136,13 @@ Yay! As you can see, the Laravel container bootstrapped a new Laravel applicatio
 Lets go ahead and add a new controller named `User` to our application.
 
 ```bash
-$ docker-compose exec myapp php artisan make:controller --resource UserResourceController
+$ docker exec -it myapp_myapp_1 php artisan make:controller --resource UserResourceController
 ```
 
 Lets also add a new dependency to the project.
 
 ```bash
-$ docker-compose exec myapp composer require phpmailer/phpmailer:5.2.*
+$ docker exec -it myapp_myapp_1 composer require phpmailer/phpmailer:5.2.*
 ```
 
 From the last commands, you must have already figured out that commands can be executed inside the `myapp` service container by prefixing the command with `docker-compose exec myapp`.

@@ -130,3 +130,12 @@ $ docker-compose exec myapp composer require phpmailer/phpmailer:5.2.*
 ```
 
 You get the idea..
+
+#Create an Immutable Image
+After writing your code, you can use the associated Docker file to easily create a Docker image that has all of your code installed.
+
+```bash
+$ curl -L "https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/production/Dockerfile" > Dockerfile
+docker build -t .my-image-name .
+```
+Naturally you can use this docker file in your CI to build the image in a clean room.

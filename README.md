@@ -136,6 +136,9 @@ After writing your code, you can use the associated Docker file to easily create
 
 ```bash
 $ curl -L "https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/production/Dockerfile" > Dockerfile
-docker build -t .my-image-name .
+$docker build -t .my-image-name .
 ```
+
+This will create an immutable image with all of your code and your code's dependency in an image and ready to run.
+
 Naturally you can use this docker file in your CI to build the image in a clean room.

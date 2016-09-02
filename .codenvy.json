@@ -1,0 +1,82 @@
+{
+  "v": "4.0",
+  "workspace": {
+    "name": "laravel",
+    "defaultEnv": "laravel",
+    "environments": [
+      {
+        "name": "laravel",
+        "recipe": null,
+        "machineConfigs": [
+          {
+            "name": "ws-machine",
+            "limits": {
+              "ram": 1000
+            },
+            "source": {
+              "type": "image",
+              "location": "bitnami/laravel:che"
+            },
+            "type": "docker",
+            "dev": true
+          }
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "laravel-sample",
+        "type": "blank",
+        "path": "/laravel-sample",
+        "source": {
+          "type": "git",
+          "location": "https://github.com/bitnami/bitnami-docker-laravel",
+          "parameters": {
+            "branch": "che",
+            "keepVcs": "true"
+          }
+        },
+        "mixins": [
+          "git",
+          "pullrequest"
+        ],
+        "attributes": {
+          "local_branch": [ "che" ],
+          "contribute_to_branch" : [ "master" ]
+        },
+        "modules": [],
+        "problems": []
+      }
+    ],
+    "commands": [
+      {
+        "name": "run",
+        "type": "custom",
+        "commandLine": "source /opt/bitnami/stacksmith-utils.sh && print_welcome_page && cd ${current.project.path} && php artisan serve --host=0.0.0.0 --port=3000",
+        "attributes": {
+          "previewUrl": "http://${server.port.3000}/"
+        }
+      },
+      {
+        "name": "create project - run first",
+        "type": "custom",
+        "commandLine": "source /opt/bitnami/stacksmith-utils.sh && print_welcome_page && harpoon start mariadb && cp -a /tmp/laravel-sample/ /projects/ && rm -rf /tmp/laravel-sample  && cd ${current.project.path} && composer update && php artisan migrate && php artisan serve --host=0.0.0.0 --port=3000",
+        "attributes": {
+          "previewUrl": "http://${server.port.3000}/"
+        }
+      }
+    ]
+  },
+  "ide": {
+    "onProjectsLoaded": {
+      "actions": [
+        {
+          "id": "runCommand",
+          "properties": {
+            "name": "create project - run first"
+          }
+        }
+      ]
+    }
+  }
+}

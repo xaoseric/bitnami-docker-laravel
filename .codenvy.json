@@ -15,7 +15,7 @@
             },
             "source": {
               "type": "image",
-              "location": "bitnami/laravel:che"
+              "location": "bitnami/che-laravel:development"
             },
             "type": "docker",
             "dev": true

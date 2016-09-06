@@ -40,4 +40,6 @@ EXPOSE 3000
 
 LABEL che:server:3000:ref=laravel che:server:3000:protocol=http
 
+USER bitnami
+
 CMD ["tail", "-f", "/dev/null"]

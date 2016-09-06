@@ -30,10 +30,10 @@
         "path": "/laravel-sample",
         "source": {
           "type": "git",
-          "location": "https://github.com/bitnami/bitnami-docker-laravel",
+          "location": "https://github.com/bitnami/bitnami-docker-che-blank-sample",
           "parameters": {
-            "branch": "che",
-            "keepVcs": "true"
+            "branch": "master",
+            "keepVcs": "false"
           }
         },
         "mixins": [
@@ -60,7 +60,7 @@
       {
         "name": "create project - run first",
         "type": "custom",
-        "commandLine": "source /opt/bitnami/stacksmith-utils.sh && print_welcome_page && harpoon start mariadb && cp -a /tmp/laravel-sample/ /projects/ && rm -rf /tmp/laravel-sample  && cd ${current.project.path} && composer update && php artisan migrate && php artisan serve --host=0.0.0.0 --port=3000",
+        "commandLine": "source /opt/bitnami/stacksmith-utils.sh && print_welcome_page && sudo HOME=/root /opt/bitnami/nami/bin/nami start mariadb && cp -a /tmp/laravel-sample/ /projects/ && rm -rf /tmp/laravel-sample && cd ${current.project.path} && composer update && php artisan migrate && php artisan serve --host=0.0.0.0 --port=3000",
         "attributes": {
           "previewUrl": "http://${server.port.3000}/"
         }

@@ -1,4 +1,4 @@
-{
+B0;95;0c{
   "v": "4.0",
   "workspace": {
     "name": "laravel",
@@ -60,7 +60,7 @@
       {
         "name": "create project - run first",
         "type": "custom",
-        "commandLine": "source /opt/bitnami/stacksmith-utils.sh && print_welcome_page && sudo HOME=/root /opt/bitnami/nami/bin/nami start mariadb && cp -a /tmp/laravel-sample/ /projects/ && rm -rf /tmp/laravel-sample && cd ${current.project.path} && composer update && php artisan migrate && php artisan serve --host=0.0.0.0 --port=3000",
+        "commandLine": "source /opt/bitnami/stacksmith-utils.sh && print_welcome_page && sudo HOME=/root /opt/bitnami/nami/bin/nami start mariadb && cp -a /tmp/laravel-sample/ /projects/ && sudo rm -rf /tmp/laravel-sample && cd ${current.project.path} && composer update && php artisan migrate && php artisan serve --host=0.0.0.0 --port=3000",
         "attributes": {
           "previewUrl": "http://${server.port.3000}/"
         }

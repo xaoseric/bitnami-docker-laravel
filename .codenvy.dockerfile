@@ -12,7 +12,7 @@ ENV STACKSMITH_STACK_ID="u9fs9c0" \
     LARAVEL_ENV=development \
     BITNAMI_IMAGE_VERSION=5.2.31-r5 \
     PATH=/opt/bitnami/java/bin:/opt/bitnami/node/bin:/opt/bitnami/php/bin:/opt/bitnami/php/sbin:/opt/bitnami/common/bin:~/.composer/vendor/bin:$PATH \
-    NODE_PATH=NODE_PATH=/opt/bitnami/node/lib/node_modules    
+    NODE_PATH=NODE_PATH=/opt/bitnami/node/lib/node_modules
 
 # Install java dependency
 RUN bitnami-pkg install java-1.8.0_91-0 --checksum 64cf20b77dc7cce3a28e9fe1daa149785c9c8c13ad1249071bc778fa40ae8773
@@ -26,20 +26,18 @@ RUN npm install -g gulp
 
 RUN mkdir /tmp/laravel-sample && cd /tmp/laravel-sample && composer create-project "laravel/laravel=5.2.31" /tmp/laravel-sample --prefer-dist
 
+EXPOSE 3000
+
+LABEL che:server:3000:ref=laravel che:server:3000:protocol=http
+
+USER bitnami
+WORKDIR /projects
+
 #Adding useful environment variables for enabling functionality
 ENV TERM=xterm \
     DB_HOST=127.0.0.1 \
     DB_USERNAME=laravelSample \
     DB_DATABASE=laravelSample \
     DB_PASSWORD=laravelSample
-
-
-WORKDIR /projects
-
-EXPOSE 3000
-
-LABEL che:server:3000:ref=laravel che:server:3000:protocol=http
-
-USER bitnami
 
 CMD ["tail", "-f", "/dev/null"]

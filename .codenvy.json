@@ -22,7 +22,7 @@
         }
       }
     },
-    "name": "bitnami-laravel",
+    "name": "laravel",
     "defaultEnv": "default",
     "projects": [
       {

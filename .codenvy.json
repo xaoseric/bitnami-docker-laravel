@@ -5,7 +5,7 @@
       "default": {
         "recipe": {
           "type": "dockerimage",
-          "location": "bitnami/che-laravel:che-5.2.31-r6"
+          "location": "bitnami/che-laravel:che-5.2.31-r7"
         },
         "machines": {
           "ws-machine": {
